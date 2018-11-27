@@ -1,7 +1,22 @@
-<nav>
-  {% for item in site.data.navigation %}
-    <a href={{item.link}} {% if page.url == item.link %}class="current"{% endif %}>
-      {{item.name}}
-    </a>
-  {% endfor %}
-</nav>
+<div class="navbar-fixed">
+  <nav>
+    <div class="nav-wrapper orange">
+      <a href="/" class="brand-logo">My Blog</a>
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        {% include navigation-menu.html %}
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<ul class="sidenav orange" id="mobile-demo">
+  {% include navigation-menu.html %}
+</ul>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.sidenav');
+    var instances = M.Sidenav.init(elems, {});
+  });
+</script>
